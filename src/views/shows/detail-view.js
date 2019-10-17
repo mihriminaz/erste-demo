@@ -8,6 +8,17 @@ export default class DetailView extends View {
         this.supportsBackGesture = true;
     }
 
+    onAfterRender() {
+      // WORKS you can type immediately - input is focused
+      // setTimeout(() => {
+      //   this.$('input') && this.$('input').focus();
+      // }, 0)
+
+      // DOES NOT WORK
+      // you need to manually focus to open the keyboard
+      this.$('input') && this.$('input').focus();
+  }
+
     onTap(e) {
         console.log(`tapping ${this.show.title}`);
     };
@@ -24,6 +35,7 @@ export default class DetailView extends View {
             <p>Title: ${show.title}</p>
             <p>Year: ${show.year}</p>
             <p># of seasons: ${show.num_seasons}</p>
+            <input type='text'></input>
         </div>
     </detail-background>
 </view>
